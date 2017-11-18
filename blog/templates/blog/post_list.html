@@ -4,7 +4,7 @@
 		<title>Natalia'a Blog</title>
 	</head>
 	<body>
-		<div>
+		<!-- <div>
 			<h1><a href="/">Django Girls Blog</a></h1>
 		</div>
 
@@ -24,6 +24,17 @@
 			<p>published: 18.11.2017, 3:25 PM</p>
 			<h2><a href="">Really serious now</a></h2>
 			<p>This is the first blog post without a joke. Nothing to add.</p>
-		</div>
+		</div> -->
+
+		{% for post in posts %}
+			<div>
+				<p>published: {{ post.published_date }} </p>
+				<h2><a href=""> {{ post.title }} </a></h2>
+				<p> {{ post.text|linebreaksbr }} </p>	
+			</div>
+			{{ post }}
+		{% endfor %}
+
+
 	</body>
 </html>
