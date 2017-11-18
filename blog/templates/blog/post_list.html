@@ -1,40 +1,13 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Natalia'a Blog</title>
-	</head>
-	<body>
-		<!-- <div>
-			<h1><a href="/">Django Girls Blog</a></h1>
-		</div>
+{% extends 'blog/base.html' %}
 
-		<div>
-			<p>published: 18.11.2017, 3:21 PM </p>
-			<h2><a href="">Let's start with a Joke</a></h2>
-			<p>My friend told me to take a spider out instead of killing it.<br/><br/>  We went and had drinks.<br/> <br/>  Cool guy, wants to be a <em>web designer</em>.</p>
-		</div>
-
-		<div>
-			<p>published: 18.11.2017, 3:23 PM</p>
-			<h2><a href="">No more jokes - serious stuff</a></h2>
-			<p>Why are spiders the best web developers? - They love bugs</p>
-		</div>
-
-		<div>
-			<p>published: 18.11.2017, 3:25 PM</p>
-			<h2><a href="">Really serious now</a></h2>
-			<p>This is the first blog post without a joke. Nothing to add.</p>
-		</div> -->
-
-		{% for post in posts %}
-			<div>
-				<p>published: {{ post.published_date }} </p>
-				<h2><a href=""> {{ post.title }} </a></h2>
-				<p> {{ post.text|linebreaksbr }} </p>	
-			</div>
-			{{ post }}
-		{% endfor %}
-
-
-	</body>
-</html>
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
